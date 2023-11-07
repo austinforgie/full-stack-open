@@ -1,0 +1,7 @@
+POST https://part-3-phonebook.fly.dev/api/persons/
+Content-Type: application/json
+
+{
+  "name":"Kim Hopkins",
+  "number":"345-234-4563"
+}
