@@ -19,15 +19,15 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject);
 
-const reducer = (state = initialState, { type, payload }) => {
+const anecdoteReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "VOTE": {
       let target = state.find((anecdote) => anecdote.id === payload.id);
       const updatedTarget = { ...target, votes: target.votes + 1 };
 
-      const updatedState = state.map((anecdote) =>
-        anecdote.id === target.id ? updatedTarget : anecdote
-      );
+      const updatedState = state.map((anecdote) => {
+        return anecdote.id === target.id ? updatedTarget : anecdote;
+      });
 
       return updatedState;
     }
@@ -47,4 +47,4 @@ export const createAnecdote = (anecdote) => ({
   payload: { anecdote },
 });
 
-export default reducer;
+export default anecdoteReducer;
